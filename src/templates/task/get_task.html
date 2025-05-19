@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ task.title }}{% endblock title %}
+
+{% block body %}
+  <h1>{{ task.title }}</h1>
+  <p>{{ task.detail }}</p>
+  <ul>
+  {% for subtask in task.subtask_set.all %}
+    <li>
+      <a href="{% url 'subtask:subtask_detail' task.id subtask.id %}">
+        {% if subtask.completion_status %}
+          <s>{{ subtask.title }}</s>
+        {% else %}
+          <strong>{{ subtask.title }}</strong>
+        {% endif %}
+      </a>
+      {% if subtask.completion_status %} ✔️{% else %} ❌{% endif %}
+      &nbsp;
+      <a href="{% url 'subtask:subtask_update' task.id subtask.id %}">ویرایش</a> |
+      <a href="{% url 'subtask:subtask_delete' task.id subtask.id %}">حذف</a>
+    </li>
+  {% empty %}
+    <strong>هیچ خرده‌وظیفه‌ای در این وظیفه وجود ندارد</strong>
+  {% endfor %}
+  </ul>
+
+  {# اینجا به جای list.id از task.list.id استفاده کنید: #}
+  <a href="{% url 'subtask:subtask_create' task.id %}">
+    <strong>افزودن خرده‌وظیفه‌ به این وظیفه</strong>
+  </a><br>
+
+  {# لینک ویرایش/حذف خودِ وظیفه #}
+  <a href="{% url 'task:task_update' task.list.id task.id %}">ویرایش این وظیفه</a><br>
+  <a href="{% url 'task:task_delete' task.list.id task.id %}">حذف این وظیفه</a>
+{% endblock body %}

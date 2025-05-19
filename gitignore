@@ -1,0 +1,12 @@
+.venv/
+src/account/__pycache__/
+src/account/migrations/
+src/core/__pycache__/
+src/core/migrations/
+src/list/__pycache__/
+src/list/migrations/
+src/subtask/__pycache__/
+src/subtask/migrations/
+src/task/__pycache__/
+src/task/migrations/
+src/to_do/__pycache__/

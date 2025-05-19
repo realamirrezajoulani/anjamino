@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+
+{% block title %}Delete task{% endblock title %}
+
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+ 
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <p>آیا مطمئن هستید که می خواهید "{{ object }}" را حذف کنید؟</p>
+ 
+    {{ form }}
+     
+    <input type="submit" value="تأیید">
+</form>
+{% endblock body %}

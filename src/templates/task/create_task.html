@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+
+{% block title %}Create task{% endblock title %}
+
+{% block body %}
+<form method="POST" enctype="multipart/form-data">
+ 
+    <!-- Security token -->
+    {% csrf_token %}
+ 
+    <!-- Using the formset -->
+    {{ form.as_p }}
+     
+    <input type="submit" value="ارسال">
+</form>
+{% endblock body %}

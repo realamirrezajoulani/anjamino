@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ list.title }}{% endblock title %}
+
+{% block body %}
+  <h1>{{ list.title }}</h1>
+  <ul>
+  {% for task in tasks %}
+    <li>
+      <a href="{% url 'task:task_detail' list.id task.id %}">
+        {% if task.completion_status %}
+          <s>{{ task.title }}</s>
+        {% else %}
+          <strong>{{ task.title }}</strong>
+        {% endif %}
+      </a>
+      {% if task.completion_status %}✔️{% else %}❌{% endif %}
+    </li>
+  {% empty %}
+    <strong>هیچ وظیفه‌ای در این فهرست وجود ندارد</strong>
+  {% endfor %}
+  </ul>
+
+  <a href="{% url 'task:task_create' list.id %}"><strong>افزودن وظیفه به این لیست</strong></a><br>
+  <a href="{% url 'list:list_update' list.id %}">ویرایش این لیست</a><br>
+  <a href="{% url 'list:list_delete' list.id %}">حذف این لیست</a>
+{% endblock body %}

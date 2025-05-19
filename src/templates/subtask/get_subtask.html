@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ subtask.title }}{% endblock title %}
+
+{% block body %}
+  <h1>{{ subtask.title }}</h1>
+  <br>
+  <a href="{% url 'subtask:subtask_update' subtask.task.id subtask.id %}">
+    ویرایش این خرده‌وظیفه
+  </a>
+  <br>
+  <a href="{% url 'subtask:subtask_delete' subtask.task.id subtask.id %}">
+    حذف این خرده‌وظیفه
+  </a>
+{% endblock body %}

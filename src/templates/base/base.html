@@ -1,0 +1,14 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        {% block head %}{% endblock head %}
+        <title>{% block title %}{% endblock title %}</title>
+    </head>
+    <body>
+        {% include 'partial/header.html' %}
+        {% block body %}{% endblock body %}
+        {% include 'partial/footer.html' %}
+    </body>
+</html>

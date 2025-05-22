@@ -66,3 +66,4 @@ class TaskDeleteView(OwnerOrAdminMixin, DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('task:tasks', kwargs={'list_pk': self.get_object().list.pk})
+    
